@@ -1,7 +1,7 @@
 <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar ie-nav" [containerInside]="false">
   <logo>
     <a class="logo navbar-brand" href="#">
-      <strong>Task Manager</strong>
+      <strong>{{title}}</strong>
     </a>
   </logo>
   <links>
@@ -17,32 +17,23 @@
       <li class="nav-item waves-light" mdbWavesEffect>
         <a class="nav-link">View Task</a>
       </li>
-      <li class="nav-item dropdown waves-light" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Help
-          <span class="caret"></span>
-        </a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Contact</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Design</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">About</a>
-        </div>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link">About</a>
       </li>
     </ul>
     <ul class="navbar-nav nav-flex-icons">
       <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">
+        <a class="nav-link" href="https://www.facebook.com/somnathmukherjee81" target="blank">
           <i class="fa fa-facebook"></i>
         </a>
       </li>
       <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">
+        <a class="nav-link" href="https://twitter.com/shyamarcciit" target="blank">
           <i class="fa fa-twitter"></i>
         </a>
       </li>
       <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">
+        <a class="nav-link" href="https://www.instagram.com/somnathmukherjee81/" target="blank">
           <i class="fa fa-instagram"></i>
         </a>
       </li>
@@ -60,13 +51,29 @@
 <main>
   <div class="container" style="height:1300px;">
     <div class="row mt-5 pt-5">
+      <div class="col">
+          <app-view-task></app-view-task>
+      </div>
+    </div>    
+    <!-- <router-outlet></router-outlet> -->
+    <!-- <div class="row mt-5 pt-5">
       <div class="col text-center">
         <h1 class="section-heading pt-4">FSD .Net Capsule Program</h1>
         <h4 class="feature-title">Task Manager</h4>
         <br>
-        <p class="section-description lead">The Task Manager is a Single Page Application (SPA) to keep track of upcoming tasks, finished tasks and their respective priorities. </p>
+        <app-view-task></app-view-task>
+        <p class="section-description lead">The Task Manager is a Single Page Application (SPA) to keep track of upcoming tasks, finished tasks and their respective
+          priorities. </p>
       </div>
-    </div>
+    </div> -->
   </div>
 </main>
 <!-- /.Main -->
+<router-outlet></router-outlet>
+
+<!--Footer-->
+<footer class="footer-copyright indigo lighten-2 py-3 text-center text-white fixed-bottom">
+  © 2018 Copyright:
+  <a class="text-white" href="https://mdbootstrap.com/material-design-for-bootstrap/"> Somnath Mukherjee </a>
+</footer>
+<!--/.Footer-->
