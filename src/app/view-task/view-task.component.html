@@ -2,54 +2,39 @@
   <div class="container py-3">
     <div class="row">
       <div class="col-md-8">
-        <div class="card mb-2" *ngFor="let task of tasks">
-          <div class="card-body">
-            <h4 class="card-title">
-              <strong>{{task.summary}}</strong>
-            </h4>
-            <p class="card-text">{{task.description}}</p>
-            <p class="card-text">Start By: {{task.startDate | date: 'dd MMM yyyy'}}, End By: {{task.endDate | date: 'dd MMM yyyy'}}</p>
-            <p class="card-text">Priority: {{task.priority}}</p>
-            <p class="card-text">Status: {{task.status}}</p>
-            <a type="button" class="btn btn-primary btn-md waves-light" mdbWavesEffect (click)="onSelect(task)">
-              <i class="fa fa-edit mr-1"></i> Edit</a>
-            <a type="button" class="btn btn-secondary btn-md waves-light" mdbWavesEffect>
-              <i class="fa fa-check mr-1"> </i>End Task</a>
-          </div>
-        </div>
+        <ul class="tasks">
+          <li *ngFor="let task of tasks" [class.selected]="task === selectedTask" (click)="onSelect(task)">
+            <div class="card mb-2">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <strong>{{task.summary}}</strong>
+                </h4>
+                <p class="card-text" *ngIf="task.description">{{task.description}}</p>
+                <p class="card-text">
+                  <span *ngIf="task.startDate">
+                    <strong>Start By: </strong>{{task.startDate | date: 'dd MMM yyyy'}}, </span>
+                  <span *ngIf="task.endDate">
+                    <strong>End By: </strong>{{task.endDate | date: 'dd MMM yyyy'}}</span>
+                </p>
+                <p class="card-text">
+                  <span *ngIf="task.priority >= 0">
+                    <strong>Priority: </strong>{{task.priority}} </span>
+                  <span *ngIf="task.status >= 0">
+                    <strong>Status: </strong>{{task.status}} </span>
+                  <span *ngIf="task.parentId >= 0">
+                    <strong>Parent Id: </strong>{{task.parentId}}</span>
+                </p>
+                <a type="button" class="btn btn-primary btn-md waves-light" mdbWavesEffect (click)="onSelect(task)">
+                  <i class="fa fa-lg fa-edit mr-1"></i> Edit</a>
+                <a type="button" class="btn btn-secondary btn-md waves-light" mdbWavesEffect>
+                  <i class="fa fa-lg fa-check mr-1"></i> End Task</a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
       <div class="col-md-4">
-        <h3 class="font-weight-bold dark-grey-text">Task Details</h3>
-        <div class="md-form">
-          <label for="summary" class="">Summary</label>
-          <input type="text" id="summary" class="form-control" [(ngModel)]="selectedTask.summary" mdbInputDirective>
-        </div>
-        <div class="md-form">
-          <label for="description">Description</label>
-          <textarea type="text" id="description" class="md-textarea form-control" [(ngModel)]="selectedTask.description" mdbInputDirective></textarea>
-        </div>
-        <div class="md-form">
-          <label>Start Date</label>
-          <input type="date" id="startDate" class="form-control" [(ngModel)]="selectedTask.startDate" mdbInputDirective placeholder="">
-        </div>
-        <div class="md-form">
-          <label>End Date</label>
-          <input type="date" id="endDate" class="form-control" [(ngModel)]="selectedTask.endDate" mdbInputDirective placeholder="">
-        </div>
-        <div class="md-form">
-          <label for="priority" class="">Priority</label>
-          <input type="range" id="priority" class="form-control" [(ngModel)]="selectedTask.priority" mdbInputDirective min="0" max="4"
-            step="1">
-        </div>
-        <div class="md-form">
-          <!-- <label>Status</label> -->
-          <select id="status" class="form-control" [(ngModel)]="selectedTask.status">
-            <option value="0">Not Started</option>
-            <option value="1">In Progress</option>
-            <option value="2">Deferred</option>
-            <option value="2">Complete</option>
-          </select>
-        </div>
+        <app-add-update-task [task]="selectedTask"></app-add-update-task>
       </div>
     </div>
   </div>

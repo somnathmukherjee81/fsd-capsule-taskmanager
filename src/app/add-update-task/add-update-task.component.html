@@ -1,0 +1,43 @@
+<div class="card mb-2">
+  <div class="card-body" *ngIf="task">
+    <h4 class="card-title">
+      <strong>Task Details</strong>
+    </h4>
+    <div class="md-form">
+      <label for="summary" class="">Summary</label>
+      <input type="text" id="summary" class="form-control" [(ngModel)]="task.summary" mdbInputDirective>
+    </div>
+    <div class="md-form">
+      <label for="description">Description</label>
+      <textarea type="text" id="description" class="md-textarea form-control" [(ngModel)]="task.description" mdbInputDirective></textarea>
+    </div>
+    <div class="md-form">
+      <label>Start Date</label>
+      <input type="date" id="startDate" class="form-control" [(ngModel)]="task.startDate" mdbInputDirective placeholder="">
+    </div>
+    <div class="md-form">
+      <label>End Date</label>
+      <input type="date" id="endDate" class="form-control" [(ngModel)]="task.endDate" mdbInputDirective placeholder="">
+    </div>
+    <div class="md-form">
+      <label for="priority" class="">Priority</label>
+      <input type="range" id="priority" class="form-control" [(ngModel)]="task.priority" mdbInputDirective min="0" max="4"
+        step="1">
+    </div>
+    <div class="md-form">
+      <!-- <label>Status</label> -->
+      <select id="status" class="form-control" [(ngModel)]="task.status">
+        <option value="0">Not Started</option>
+        <option value="1">In Progress</option>
+        <option value="2">Deferred</option>
+        <option value="2">Complete</option>
+      </select>
+    </div>
+    <div class="md-form">
+      <a type="button" class="btn btn-default btn-md waves-light" mdbWavesEffect>
+        <i class="fa fa-lg fa-save mr-1"></i> Update</a>
+      <a type="button" class="btn btn-blue-grey btn-md waves-light" mdbWavesEffect>
+        <i class="fa fa-lg fa-remove mr-1"> </i> Reset</a>
+    </div>
+  </div>
+</div>
