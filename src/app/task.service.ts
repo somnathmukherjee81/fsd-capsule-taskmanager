@@ -26,9 +26,19 @@ export class TaskService {
     } else {
       return this.http.get<Task[]>(this.tasksUrl)
         .pipe(
-          catchError(this.handleError('getHeroes', []))
+          tap(tasks => this.log(`fetched tasks`)),
+          catchError(this.handleError('getTasks', []))
         );
     }
+  }
+
+  /** GET task by id. Will 404 if id not found */
+  getTask(id: number): Observable<Task> {
+    const url = `${this.tasksUrl}/${id}`;
+    return this.http.get<Task>(url).pipe(
+      tap(_ => this.log(`fetched task id=${id}`)),
+      catchError(this.handleError<Task>(`getTask id=${id}`))
+    );
   }
 
   /** Log a TaskService message with the MessageService */
