@@ -6,75 +6,97 @@ localMoment.locale('en');
 
 export const TASKS: Task[] = [
     {
-        taskId: 1,
-        summary: 'Implement Channel Service',
-        description: 'Implement Channel Service for the feature which will invoke the factories.',
-        startDate: localMoment('2018-07-02').toDate(),
-        endDate: localMoment('2018-07-06').toDate(),
+        $id: '14',
+        taskID: 1,
+        summary: 'Mock - Implement Channel Service',
+        description: 'Implement Channel Service for the feature which will invoke the factories',
+        startDate: '2018-07-02T00:00:00',
+        endDate: '2018-07-06T00:00:00',
         priority: 3,
         status: 0
     },
     {
-        taskId: 2,
-        summary: 'Implement Front End Service',
+        $id: '15',
+        taskID: 2,
+        summary: 'Mock - Implement Front End Service',
         description: 'Implement Front End Service for the feature which will invoke the Channel Service',
-        startDate: localMoment('2018-07-09').toDate(),
-        endDate: localMoment('2018-07-13').toDate(),
+        startDate: '2018-07-09T00:00:00',
+        endDate: '2018-07-13T00:00:00',
         priority: 3,
         status: 0
     },
     {
-        taskId: 3,
-        summary: 'Implement Front End',
+        $id: '16',
+        taskID: 3,
+        summary: 'Mock - Implement Front End',
         description: 'Implement Front End for the feature which will invoke the Front End Service',
-        startDate: localMoment('2018-07-16').toDate(),
-        endDate: localMoment('2018-07-20').toDate(),
+        startDate: '2018-07-16T00:00:00',
+        endDate: '2018-07-20T00:00:00',
         priority: 3,
         status: 0
     },
     {
-        taskId: 4,
-        parentId: 1,
-        summary: 'Create Channel Service Repository'
+        $id: '17',
+        taskID: 4,
+        parentID: 1,
+        summary: 'Mock - Create Channel Service Repository'
     },
     {
-        taskId: 5,
-        parentId: 1,
-        summary: 'Create ASP.Net Core WebApi for Channel Service'
+        $id: '18',
+        taskID: 5,
+        parentID: 1,
+        summary: 'Mock - Create ASP.Net Core WebApi for Channel Service'
     },
     {
-        taskId: 6,
-        parentId: 1,
-        summary: 'Create CI/CD pipeline for Channel Service'
+        $id: '19',
+        taskID: 6,
+        parentID: 1,
+        summary: 'Mock - Create CI/CD pipeline for Channel Service'
     },
     {
-        taskId: 7,
-        parentId: 2,
-        summary: 'Create Front End Service Repository'
+        $id: '20',
+        taskID: 7,
+        parentID: 2,
+        summary: 'Mock - Create Front End Service Repository'
     },
     {
-        taskId: 8,
-        parentId: 2,
-        summary: 'Create Node.js service for Front End Service'
+        $id: '21',
+        taskID: 8,
+        parentID: 2,
+        summary: 'Mock - Create Node.js service for Front End Service'
     },
     {
-        taskId: 9,
-        parentId: 2,
-        summary: 'Create CI/CD pipeline for Front End Service'
+        $id: '22',
+        taskID: 9,
+        parentID: 2,
+        summary: 'Mock - Create CI/CD pipeline for Front End Service'
     },
     {
-        taskId: 10,
-        parentId: 3,
-        summary: 'Create Front End Repository'
+        $id: '23',
+        taskID: 10,
+        parentID: 3,
+        summary: 'Mock - Create Front End Repository'
     },
     {
-        taskId: 11,
-        parentId: 3,
-        summary: 'Create React/Redux Implementation of the Front End'
+        $id: '24',
+        taskID: 11,
+        parentID: 3,
+        summary: 'Mock - Create React/Redux Implementation of the Front End'
     },
     {
-        taskId: 12,
-        parentId: 3,
-        summary: 'Create CI/CD pipeline for Front End'
+        $id: '25',
+        taskID: 12,
+        parentID: 3,
+        summary: 'Mock - Create CI/CD pipeline for Front End'
+    },
+    {
+        $id: '26',
+        taskID: 14,
+        summary: 'Mock - Create Release Definitions',
+        description: 'Create Release Definitions in Microsoft Azure',
+        startDate: '2018-07-23T00:00:00',
+        endDate: '2018-07-27T00:00:00',
+        priority: 3,
+        status: 0
     }
-  ];
+];
