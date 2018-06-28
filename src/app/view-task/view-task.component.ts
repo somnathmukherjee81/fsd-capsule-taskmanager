@@ -10,7 +10,7 @@ import { TaskService } from './../task.service';
 export class ViewTaskComponent implements OnInit {
   tasks: Task[];
   selectedTask: Task = {
-    taskId: -1,
+    taskID: -1,
     summary: null
   };
 

@@ -8,7 +8,7 @@ import { Task } from '../models/task';
 })
 export class AddUpdateTaskComponent implements OnInit {
   @Input() task: Task = {
-    taskId: -1,
+    taskID: -1,
     summary: null
   };
 

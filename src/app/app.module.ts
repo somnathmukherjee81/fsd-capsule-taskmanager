@@ -10,6 +10,7 @@ import { AddUpdateTaskComponent } from './add-update-task/add-update-task.compon
 import { AppRoutingModule } from './/app-routing.module';
 import { AboutComponent } from './about/about.component';
 import { MessagesComponent } from './messages/messages.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MessagesComponent } from './messages/messages.component';
     BrowserModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
