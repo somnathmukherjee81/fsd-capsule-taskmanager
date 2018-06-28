@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AddUpdateTaskComponent } from './add-update-task/add-update-task.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AboutComponent } from './about/about.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AboutComponent } from './about/about.component';
     ViewTaskComponent,
     HomeComponent,
     AddUpdateTaskComponent,
-    AboutComponent
+    AboutComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

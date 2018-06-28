@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
-import { TASKS } from '../models/mock-tasks';
+import { TaskService } from './../task.service';
 
 @Component({
   selector: 'app-view-task',
@@ -8,15 +8,21 @@ import { TASKS } from '../models/mock-tasks';
   styleUrls: ['./view-task.component.scss']
 })
 export class ViewTaskComponent implements OnInit {
-  tasks = TASKS;
+  tasks: Task[];
   selectedTask: Task = {
     taskId: -1,
     summary: null
   };
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks()
+      .subscribe(tasks => this.tasks = tasks);
   }
 
   onSelect(task: Task): void {
