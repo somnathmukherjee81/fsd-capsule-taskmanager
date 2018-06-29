@@ -19,6 +19,8 @@ export class AddUpdateTaskComponent implements OnInit {
     summary: null
   };
 
+  @Input() allTaskNames: any[];
+
   @Output() taskAdded = new EventEmitter<Task>();
   @Output() taskUpdated = new EventEmitter<Task>();
   @Output() resetMode = new EventEmitter<void>();

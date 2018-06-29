@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskService } from './../task.service';
+import { allResolved } from 'q';
 
 @Component({
   selector: 'app-view-task',
@@ -14,6 +15,7 @@ export class ViewTaskComponent implements OnInit {
     summary: null
   };
   activeMode = 'ADD'; // ADD | EDIT
+  allTaskNames: any[];
 
   constructor(private taskService: TaskService) { }
 
@@ -23,14 +25,24 @@ export class ViewTaskComponent implements OnInit {
 
   getTasks(): void {
     this.taskService.getTasks()
-      .subscribe(tasks => this.tasks = tasks);
+      .subscribe(tasks => {
+        this.tasks = tasks;
+        this.refreshTaskNames();
+      });
   }
 
   delete(task: Task): void {
     this.taskService.deleteTask(task).subscribe(_ => {
       this.tasks = this.tasks.filter(t => t.taskID !== task.taskID);
       this.resetMode();
+      this.refreshTaskNames();
     });
+  }
+
+  getTaskSummary(taskId: number) {
+    const foundTask = this.tasks.find((task) => task.taskID === taskId);
+
+    return foundTask ? foundTask.summary : '';
   }
 
   onSelect(task: Task): void {
@@ -43,6 +55,7 @@ export class ViewTaskComponent implements OnInit {
     this.activeMode = 'ADD';
 
     this.resetMode();
+    this.refreshTaskNames();
   }
 
   onTaskUpdated(task: Task): void {
@@ -51,11 +64,24 @@ export class ViewTaskComponent implements OnInit {
     if (index >= 0 ) {
       this.tasks[index] = task;
       this.resetMode();
+      this.refreshTaskNames();
     }
   }
 
   onResetMode(): void {
     this.resetMode();
+    this.refreshTaskNames();
+  }
+
+  refreshTaskNames(): void {
+    this.allTaskNames = this.tasks.map((t) => {
+      const taskName = {
+        id: t.taskID,
+        summary: t.summary
+      };
+
+      return taskName;
+    });
   }
 
   resetMode(): void {
