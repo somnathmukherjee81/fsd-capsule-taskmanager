@@ -26,6 +26,13 @@ export class ViewTaskComponent implements OnInit {
       .subscribe(tasks => this.tasks = tasks);
   }
 
+  delete(task: Task): void {
+    this.taskService.deleteTask(task).subscribe(_ => {
+      this.tasks = this.tasks.filter(t => t.taskID !== task.taskID);
+      this.resetMode();
+    });
+  }
+
   onSelect(task: Task): void {
     this.selectedTask = task;
     this.activeMode = 'EDIT';

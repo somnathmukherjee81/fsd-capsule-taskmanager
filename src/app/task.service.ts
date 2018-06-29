@@ -51,7 +51,7 @@ export class TaskService {
   }
 
   /** PUT: update the task on the server */
-  updateTask(task: Task): Observable<any> {
+  updateTask(task: Task): Observable<Task> {
     const url = `${this.tasksUrl}/${task.taskID}`;
     return this.http.put(url, task, httpOptions).pipe(
       tap((updatedTask: Task) => this.log(`updated task w/ id=${updatedTask.taskID}`)),
@@ -64,6 +64,17 @@ export class TaskService {
     return this.http.post<Task>(this.tasksUrl, task, httpOptions).pipe(
       tap((addedTask: Task) => this.log(`added task w/ id=${addedTask.taskID}`)),
       catchError(this.handleError<Task>('addTask'))
+    );
+  }
+
+  /** DELETE: delete the task from the server */
+  deleteTask(task: Task | number): Observable<Task> {
+    const id = typeof task === 'number' ? task : task.taskID;
+    const url = `${this.tasksUrl}/${id}`;
+
+    return this.http.delete<Task>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted task id=${id}`)),
+      catchError(this.handleError<Task>('deleteTask'))
     );
   }
 
