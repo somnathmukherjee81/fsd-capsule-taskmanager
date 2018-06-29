@@ -29,3 +29,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## UI Design
+[![UI Design of Task manager](./design/FrontEndUiDesign.png)](./design/FrontEndUiDesign.png)
+
+## Sequence Diagram
+[![Sequence Diagram of Task manager](./design/FrontEndSequenceDiagram.png)](./design/FrontEndSequenceDiagram.png)
