@@ -39,6 +39,14 @@ export class ViewTaskComponent implements OnInit {
     });
   }
 
+  completeTask(task: Task): void {
+    // Status value for 'Completed'
+    task.status = 3;
+    this.taskService.updateTask(task).subscribe(updatedTask => {
+      this.onTaskUpdated(updatedTask);
+    });
+  }
+
   getTaskSummary(taskId: number) {
     const foundTask = this.tasks.find((task) => task.taskID === taskId);
 
