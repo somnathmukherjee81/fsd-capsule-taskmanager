@@ -4,7 +4,7 @@
       <div class="col-md-8">
         <ul class="tasks">
           <li *ngFor="let task of tasks" [class.selected]="task === selectedTask">
-            <div class="card mb-2" id="{{task.taskID}}">
+            <div class="card mb-2" id="Task_{{task.taskID}}">
               <div class="card-body">
                 <h4 class="card-title">
                   <strong>{{task.summary}}</strong>
@@ -17,7 +17,7 @@
                     <strong>End By: </strong>{{task.endDate | date: 'dd MMM yyyy'}}</span>
                 </p>
                 <p class="card-text" *ngIf="task.parentID >= 0">
-                  <strong>Parent Task: </strong><a routerLink="." fragment="{{task.parentID}}">{{getTaskSummary(task.parentID)}}</a>
+                  <strong>Parent Task: </strong><a routerLink="." fragment="Task_{{task.parentID}}">{{getTaskSummary(task.parentID)}}</a>
                 </p>
                 <p class="card-text">
                   <span *ngIf="task.priority >= 0">
