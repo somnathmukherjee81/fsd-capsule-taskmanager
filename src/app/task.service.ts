@@ -6,6 +6,10 @@ import { TASKS } from './models/mock-tasks';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,6 +48,23 @@ export class TaskService {
   /** Log a TaskService message with the MessageService */
   private log(message: string) {
     this.messageService.add('TaskService: ' + message);
+  }
+
+  /** PUT: update the task on the server */
+  updateTask(task: Task): Observable<any> {
+    const url = `${this.tasksUrl}/${task.taskID}`;
+    return this.http.put(url, task, httpOptions).pipe(
+      tap((updatedTask: Task) => this.log(`updated task w/ id=${updatedTask.taskID}`)),
+      catchError(this.handleError<any>('updateTask'))
+    );
+  }
+
+  /** POST: add a new task to the server */
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.tasksUrl, task, httpOptions).pipe(
+      tap((addedTask: Task) => this.log(`added task w/ id=${addedTask.taskID}`)),
+      catchError(this.handleError<Task>('addTask'))
+    );
   }
 
   /**

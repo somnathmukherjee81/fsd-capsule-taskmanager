@@ -10,9 +10,10 @@ import { TaskService } from './../task.service';
 export class ViewTaskComponent implements OnInit {
   tasks: Task[];
   selectedTask: Task = {
-    taskID: -1,
+    taskID: null,
     summary: null
   };
+  activeMode = 'ADD'; // ADD | EDIT
 
   constructor(private taskService: TaskService) { }
 
@@ -27,6 +28,36 @@ export class ViewTaskComponent implements OnInit {
 
   onSelect(task: Task): void {
     this.selectedTask = task;
+    this.activeMode = 'EDIT';
+  }
+
+  onTaskAdded(task: Task): void {
+    this.tasks.push(task);
+    this.activeMode = 'ADD';
+
+    this.resetMode();
+  }
+
+  onTaskUpdated(task: Task): void {
+    const index = this.tasks.findIndex((t) => t.taskID === task.taskID);
+
+    if (index >= 0 ) {
+      this.tasks[index] = task;
+      this.resetMode();
+    }
+  }
+
+  onResetMode(): void {
+    this.resetMode();
+  }
+
+  resetMode(): void {
+    this.selectedTask = {
+      taskID: null,
+      summary: null
+    };
+
+    this.activeMode = 'ADD';
   }
 
 }

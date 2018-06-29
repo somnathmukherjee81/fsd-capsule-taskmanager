@@ -1,6 +1,6 @@
 export class Task {
     $id?: string;
-    taskID: number;
+    taskID?: number;
     parentID?: number;
     summary: string;
     description?: string;

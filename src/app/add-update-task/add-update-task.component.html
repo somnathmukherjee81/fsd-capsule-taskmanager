@@ -1,7 +1,7 @@
-<div class="card mb-2">
+<div class="card mb-2 sticky-top">
   <div class="card-body" *ngIf="task">
     <h4 class="card-title">
-      <strong>Task Details</strong>
+      <strong>{{title}}</strong>
     </h4>
     <div class="md-form">
       <label for="summary" class="">Summary</label>
@@ -34,10 +34,10 @@
       </select>
     </div>
     <div class="md-form">
-      <a type="button" class="btn btn-default btn-md waves-light" mdbWavesEffect>
-        <i class="fa fa-lg fa-save mr-1"></i> Update</a>
-      <a type="button" class="btn btn-blue-grey btn-md waves-light" mdbWavesEffect>
-        <i class="fa fa-lg fa-remove mr-1"> </i> Reset</a>
+      <a type="button" class="btn btn-default btn-md waves-light" (click)="save()" mdbWavesEffect>
+        <i class="fa fa-lg fa-save mr-1"></i> {{saveButtonTitle}}</a>
+      <a type="button" class="btn btn-blue-grey btn-md waves-light" (click)="cancel()" mdbWavesEffect>
+        <i class="fa fa-lg fa-remove mr-1"> </i> {{cancelButtonTitle}}</a>
     </div>
   </div>
 </div>
